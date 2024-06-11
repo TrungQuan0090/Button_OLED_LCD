@@ -1,3 +1,8 @@
+// hiển thị số lần nhấn nút lên oled
+// hơn 10 lần nhấn oled tắt
+// hơn 20 lần nhấn oled sáng
+
+
 #include <ezButton.h>
 
 ezButton button(7);  // create ezButton object that attach to pin 7;
