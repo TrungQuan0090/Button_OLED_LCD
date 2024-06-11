@@ -15,6 +15,7 @@ ezButton button(7);  // create ezButton object that attach to pin 7;
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
 // declare an SSD1306 display object connected to I2C
+
 Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 void setup() {
@@ -38,17 +39,28 @@ void loop() {
   unsigned long count = button.getCount(); // dem so lan nhan 
   
   Serial.println(count);
-  
-   oled.setCursor(0, 10);      
-   oled.setTextSize(1); 
-   oled.setTextColor(WHITE);
-   oled.print("count: ");
-   oled.print(count);
+    
+    oled.setTextSize(2);          
+    oled.setTextColor(WHITE);     
+    oled.setCursor(0, 10);       
+    oled.print("count: ");
+    oled.print(count);
+    
+   if(count > 10){
+     oled.clearDisplay();}
+   if(count > 20){
+    oled.setTextSize(2);          
+    oled.setTextColor(WHITE);     
+    oled.setCursor(0, 10);       
+    oled.print("count: ");
+    oled.print(count);}
    
-  if(count >= 10){
-     oled.setTextColor(BLACK);}
-  if(count >= 20){
-    oled.setTextColor(WHITE);}
+   oled.display(); 
+   oled.clearDisplay();
+   delay(80);
+   
+   
+   }
      
    oled.display(); 
    }
